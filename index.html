@@ -9,8 +9,15 @@
 </head>
 
 <body>
+	
 	<div id="map" style="width:1000px; height:80vh; background:#666666;"></div>
-	<input type="button" value="Get Route" data-route />
+	<form action="#" class="ba-form">
+		<input type="text" id="ba-start" required>
+		<input type="text" id="ba-end" required>
+		<button type="submit" data-route>Get Route</button>
+	</form>
+
+
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_BvGQbN1ahxfHjgxzrwMh6zzJs_NQzHU">
 	</script>
 	<script src="js/main.js"></script>
