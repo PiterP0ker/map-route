@@ -6,7 +6,8 @@
 
 		// The location of mapCenter
 		let poltava = new google.maps.LatLng(49.589100, 34.557851);
-		let kyiv = new google.maps.LatLng(50.449189, 30.516672);
+		let myrgorod = new google.maps.LatLng(49.9658184, 33.5463908);
+		let buhalovka = new google.maps.LatLng(49.9512775, 34.4902803);
 		// The map, centered at mapCenter
 		let mapEl = document.getElementById('map');
 
@@ -186,18 +187,28 @@
 		function calcRoute() {
 			var request = {
 				origin: poltava,
-				destination: kyiv,
-				travelMode: 'DRIVING'
+				destination: poltava,
+				travelMode: 'DRIVING',
+				waypoints: [
+					{
+						location: buhalovka,
+						stopover: true
+					},
+					{
+						location: myrgorod,
+						stopover: true
+					}
+				],
+				optimizeWaypoints: true
 			};
 			directionsService.route(request, function (result, status) {
-				console.log(result, status);
 
 				if (status == 'OK') {
 					directionsRenderer.setDirections(result);
 				}
 			});
 		}
-		
+
 		document.querySelector('[data-route]').onclick = function () {
 			calcRoute();
 		}
